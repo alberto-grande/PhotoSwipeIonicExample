@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope, Gallery) {
 	$scope.showSimpleGallery = function() {
 		var id = 0;
-		var pswpElement = document.querySelectorAll('.pswp.simple')[0];
+		var pswpElement = document.querySelectorAll('#pswpSimple .pswp')[0];
 
 		// build items array
 		var items = Gallery.all();
@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
 .controller('ImageArrayCtrl', function($scope, Gallery) {
   $scope.items = Gallery.all();
   $scope.showGallery = function(id) {
-		var pswpElement = document.querySelectorAll('.pswp.imageArray')[0];
+		var pswpElement = document.querySelectorAll('#pswpArray .pswp')[0];
 
 		// build items array
 		var items = Gallery.all();
