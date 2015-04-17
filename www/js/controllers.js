@@ -1,45 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Gallery) {
+.controller('DashCtrl', function($scope, $rootScope, Gallery) {
 	$scope.showSimpleGallery = function() {
 		var id = 0;
-		var pswpElement = document.querySelectorAll('#pswpSimple .pswp')[0];
-
-		// build items array
 		var items = Gallery.all();
-
-		// define options (if needed)
-		var options = {
-		    // parameter history should be false in order
-		    // to avoid URL rewrite
-		    history: false,
-		    index: id // start at first slide
-		};
-
-		// Initializes and opens PhotoSwipe
-		var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-		gallery.init();
+		$rootScope.$broadcast('show-gallery','pswpSimple', items, id);
 	};
 })
 
-.controller('ImageArrayCtrl', function($scope, Gallery) {
+.controller('ImageArrayCtrl', function($scope, $rootScope, Gallery) {
   $scope.items = Gallery.all();
   $scope.showGallery = function(id) {
-		var pswpElement = document.querySelectorAll('#pswpArray .pswp')[0];
 
 		// build items array
 		var items = Gallery.all();
+		$rootScope.$broadcast('show-gallery','pswpArray', items, id);
 
-		// define options (if needed)
-		var options = {
-		    // parameter history should be false in order
-		    // to avoid URL rewrite
-		    history: false,
-		    index: id // start at first slide
-		};
-
-		// Initializes and opens PhotoSwipe
-		var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-		gallery.init();
   }
 });
